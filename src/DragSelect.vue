@@ -60,11 +60,11 @@
     methods: {
       onMouseDown (event) {
         // Ignore right clicks
-        if (event.button === 2 || event.target.classList.contains(this.selectorClass)) return
+        if (event.button === 2 || this.hasSelectorClass(event.target)) return
 
         // Register begin point
         this.mouseDown = true
-        // this.selectedItems = []
+        this.selectedItems = []
         this.startPoint = {
           x: event.pageX,
           y: event.pageY
@@ -112,6 +112,12 @@
         }
 
         return false
+      },
+      hasSelectorClass (el) {
+        return !!(
+          el.classList.contains(this.selectorClass) ||
+          el.closest(`.${this.selectorClass}`)
+        )
       }
     },
     mounted () {
