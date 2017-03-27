@@ -1,2 +1,2 @@
 # Vue Drag to Select Component
-Inspired by [react-drag-select](/pablofierro/react-drag-select).
+Inspired by [react-drag-select](https://github.com/pablofierro/react-drag-select).
