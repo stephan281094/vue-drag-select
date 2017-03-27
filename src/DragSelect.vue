@@ -64,7 +64,6 @@
 
         // Register begin point
         this.mouseDown = true
-        this.selectedItems = []
         this.startPoint = {
           x: event.pageX,
           y: event.pageY
@@ -126,6 +125,7 @@
           const included = this.selectedItems.find((item) => {
             return child.$el === item.$el
           })
+
           if (included) {
             this.selectedItems = this.selectedItems.filter((item) => {
               return child.$el !== item.$el
