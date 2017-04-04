@@ -1,7 +1,7 @@
 <template>
   <div class="vue-drag-select" @mousedown="onMouseDown">
     <slot :selectedItems="selectedItems" />
-    <div v-if="mouseDown" class="vue-drag-selection-box"
+    <div v-if="mouseDown" class="vue-drag-select-box"
       :style="selectionBoxStyling"></div>
   </div>
 </template>
@@ -153,7 +153,7 @@
     user-select: none;
   }
 
-  .vue-drag-selection-box {
+  .vue-drag-select-box {
     position: fixed;
     background: rgba(0, 162, 255, .4);
     z-index: 99;
