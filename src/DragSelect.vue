@@ -53,7 +53,7 @@
           left: `${left}px`,
           top: `${top}px`,
           width: `${width}px`,
-          height: `${height}px`,
+          height: `${height}px`
         }
       }
     },
@@ -101,12 +101,14 @@
         if ($el.classList.contains(this.selectorClass)) {
           const boxA = this.selectionBox
           const boxB = $el.getBoundingClientRect()
+          const elTop = boxB.top + window.scrollY
+          const elLeft = boxB.left + window.scrollX
 
           return !!(
-            boxA.left <= boxB.left + boxB.width &&
-            boxA.left + boxA.width >= boxB.left &&
-            boxA.top <= boxB.top + boxB.height &&
-            boxA.top + boxA.height >= boxB.top
+            boxA.left <= elLeft + boxB.width &&
+            boxA.left + boxA.width >= elLeft &&
+            boxA.top <= elTop + boxB.height &&
+            boxA.top + boxA.height >= elTop
           )
         }
 
@@ -154,7 +156,7 @@
   }
 
   .vue-drag-select-box {
-    position: fixed;
+    position: absolute;
     background: rgba(0, 162, 255, .4);
     z-index: 99;
   }
