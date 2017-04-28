@@ -60,7 +60,7 @@
     methods: {
       onMouseDown (event) {
         // Ignore right clicks
-        if (event.button === 2 || this.hasSelectorClass(event.target)) return
+        if (event.button === 2 && this.hasSelectorClass(event.target)) return
 
         // Register begin point
         this.mouseDown = true
