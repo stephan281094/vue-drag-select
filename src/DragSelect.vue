@@ -58,6 +58,11 @@
         }
       }
     },
+    watch: {
+      selectedItems(val) {
+        this.$emit('change', val);
+      }
+    },
     methods: {
       onMouseDown (event) {
         // Ignore right clicks
