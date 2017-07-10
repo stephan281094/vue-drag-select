@@ -81,9 +81,10 @@
             y: event.pageY
           }
 
-          const children = this.$children
+          const children = this.$el.children
           if (children) {
-            this.selectedItems = children.filter(this.isItemSelected)
+            this.selectedItems = Array.from(children)
+              .filter(this.isItemSelected)
           }
         }
       },
@@ -97,10 +98,10 @@
         this.startPoint = null
         this.endPoint = null
       },
-      isItemSelected ({ $el }) {
-        if ($el.classList.contains(this.selectorClass)) {
+      isItemSelected (el) {
+        if (el.classList.contains(this.selectorClass)) {
           const boxA = this.selectionBox
-          const boxB = $el.getBoundingClientRect()
+          const boxB = el.getBoundingClientRect()
           const elTop = boxB.top + window.scrollY
           const elLeft = boxB.left + window.scrollX
 
