@@ -67,7 +67,7 @@
     methods: {
       onMouseDown (event) {
         // Ignore right clicks
-        if (event.button === 2 || this.hasSelectorClass(event.target)) return
+        if (event.button === 2) return
 
         // Register begin point
         this.mouseDown = true
@@ -88,9 +88,10 @@
             y: event.pageY
           }
 
-          const children = this.$children
+          const children = this.$el.children
           if (children) {
-            this.selectedItems = children.filter(this.isItemSelected)
+            this.selectedItems = Array.from(children)
+              .filter(this.isItemSelected)
           }
         }
       },
@@ -104,8 +105,8 @@
         this.startPoint = null
         this.endPoint = null
       },
-      isItemSelected ({ $el }) {
-        if ($el.classList.contains(this.selectorClass)) {
+      isItemSelected (el) {
+        if (el.classList.contains(this.selectorClass)) {
           const boxA = this.selectionBox
           const boxB = {
             top: $el.offsetTop,

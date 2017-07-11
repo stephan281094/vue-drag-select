@@ -5,5 +5,15 @@
   "main": "src/DragSelect.vue",
   "repository": "git@github.com:stephan281094/vue-drag-select.git",
   "author": "Stephan de Vries <stephan281094@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.2.0",
+    "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
 }
