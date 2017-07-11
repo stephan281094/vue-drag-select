@@ -124,12 +124,6 @@
         }
 
         return false
-      },
-      hasSelectorClass (el) {
-        return !!(
-          el.classList.contains(this.selectorClass) ||
-          el.closest(`.${this.selectorClass}`)
-        )
       }
     },
     mounted () {
