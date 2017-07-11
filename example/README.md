@@ -2,6 +2,9 @@
 
 An Vue Drag Select example built with [Nuxt.js](https://nuxtjs.org/).
 
+## Demo
+* Visit the demo [here](https://vue-drag-select-example.now.sh).
+
 ## Usage
 * Run `$ yarn` to install all dependencies.
 * Run `$ yarn run dev` to start a local development server.

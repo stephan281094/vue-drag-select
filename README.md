@@ -6,6 +6,9 @@
 # Vue Drag to Select Component
 A Vue component for drag selecting elements. Inspired by [react-drag-select](https://github.com/pablofierro/react-drag-select).
 
+## Demo
+* Visit the demo [here](http://vue-drag-select-example.now.sh).
+
 ## Usage
 * Add `vue-drag-select` to your project:
 
