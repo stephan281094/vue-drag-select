@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "nuxt": "latest",
-    "vue-drag-select": "^0.1.2"
+    "vue-drag-select": "^0.1.0"
   }
 }
