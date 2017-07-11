@@ -60,7 +60,7 @@
       }
     },
     watch: {
-      selectedItems(val) {
+      selectedItems (val) {
         this.$emit('change', val)
       }
     },
@@ -109,10 +109,10 @@
         if (el.classList.contains(this.selectorClass)) {
           const boxA = this.selectionBox
           const boxB = {
-            top: $el.offsetTop,
-            left: $el.offsetLeft,
-            width: $el.clientWidth,
-            height: $el.clientHeight
+            top: el.offsetTop,
+            left: el.offsetLeft,
+            width: el.clientWidth,
+            height: el.clientHeight
           }
 
           return !!(
