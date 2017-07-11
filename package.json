@@ -7,7 +7,7 @@
   "author": "Stephan de Vries <stephan281094@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ignore-path .gitignore --ext .js,.vue ."
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

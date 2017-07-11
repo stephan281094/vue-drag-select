@@ -39,6 +39,7 @@
 </script>
 
 <style>
+  /* Basic reset */
   *,
   *:before,
   *:after {
@@ -62,6 +63,7 @@
     padding: 5%;
   }
 
+  /* Custom styling */
   .item {
     display: inline-flex;
     min-width: 80px;
