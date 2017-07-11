@@ -28,9 +28,11 @@
         // Only set styling when necessary
         if (!this.mouseDown || !this.startPoint || !this.endPoint) return {}
 
+        const clientRect = this.$el.getBoundingClientRect()
+
         // Calculate position and dimensions of the selection box
-        const left = Math.min(this.startPoint.x, this.endPoint.x)
-        const top = Math.min(this.startPoint.y, this.endPoint.y)
+        const left = Math.min(this.startPoint.x, this.endPoint.x) - clientRect.left
+        const top = Math.min(this.startPoint.y, this.endPoint.y) - clientRect.top
         const width = Math.abs(this.startPoint.x - this.endPoint.x)
         const height = Math.abs(this.startPoint.y - this.endPoint.y)
 
@@ -55,6 +57,11 @@
           width: `${width}px`,
           height: `${height}px`
         }
+      }
+    },
+    watch: {
+      selectedItems (val) {
+        this.$emit('change', val)
       }
     },
     methods: {
@@ -101,15 +108,18 @@
       isItemSelected (el) {
         if (el.classList.contains(this.selectorClass)) {
           const boxA = this.selectionBox
-          const boxB = el.getBoundingClientRect()
-          const elTop = boxB.top + window.scrollY
-          const elLeft = boxB.left + window.scrollX
+          const boxB = {
+            top: el.offsetTop,
+            left: el.offsetLeft,
+            width: el.clientWidth,
+            height: el.clientHeight
+          }
 
           return !!(
-            boxA.left <= elLeft + boxB.width &&
-            boxA.left + boxA.width >= elLeft &&
-            boxA.top <= elTop + boxB.height &&
-            boxA.top + boxA.height >= elTop
+            boxA.left <= boxB.left + boxB.width &&
+            boxA.left + boxA.width >= boxB.left &&
+            boxA.top <= boxB.top + boxB.height &&
+            boxA.top + boxA.height >= boxB.top
           )
         }
 
@@ -153,6 +163,7 @@
 
 <style>
   .vue-drag-select {
+    position: relative;
     user-select: none;
   }
 
