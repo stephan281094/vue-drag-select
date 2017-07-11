@@ -1,6 +1,6 @@
 # Vue Drag Select Example
 
-An Vue Drag Select example built with [Nuxt.js](https://nuxtjs.org/).
+A Vue Drag Select example built with [Nuxt.js](https://nuxtjs.org/).
 
 ## Demo
 * Visit the demo [here](https://vue-drag-select-example.now.sh).
