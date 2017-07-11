@@ -88,10 +88,14 @@
             y: event.pageY
           }
 
-          const children = this.$el.children
+          const children = this.$children.length
+            ? this.$children
+            : this.$el.children
+
           if (children) {
-            this.selectedItems = Array.from(children)
-              .filter(this.isItemSelected)
+            this.selectedItems = Array.from(children).filter((item) => {
+              return this.isItemSelected(item.$el || item)
+            })
           }
         }
       },
