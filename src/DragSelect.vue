@@ -28,11 +28,9 @@
         // Only set styling when necessary
         if (!this.mouseDown || !this.startPoint || !this.endPoint) return {}
 
-        const clientRect = this.$el.getBoundingClientRect()
-
         // Calculate position and dimensions of the selection box
-        const left = Math.min(this.startPoint.x, this.endPoint.x) - clientRect.left
-        const top = Math.min(this.startPoint.y, this.endPoint.y) - clientRect.top
+        const left = Math.min(this.startPoint.x, this.endPoint.x) - this.$el.left
+        const top = Math.min(this.startPoint.y, this.endPoint.y) - this.$el.top
         const width = Math.abs(this.startPoint.x - this.endPoint.x)
         const height = Math.abs(this.startPoint.y - this.endPoint.y)
 
