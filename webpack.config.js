@@ -9,7 +9,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, './dist'),
     filename: '[name].js',
-    publicPath: '/',
     library: 'DragSelect',
     libraryTarget: 'umd'
   },
@@ -20,7 +19,15 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          postcss: [require('autoprefixer')]
+        }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       }
     ]
   }

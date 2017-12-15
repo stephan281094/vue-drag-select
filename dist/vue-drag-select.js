@@ -67,7 +67,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -79,7 +79,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_DragSelect_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_DragSelect_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_DragSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_DragSelect_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_db152fee_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_DragSelect_vue__ = __webpack_require__(8);
 var disposed = false
 function injectStyle (ssrContext) {
@@ -100,7 +101,7 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_DragSelect_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_DragSelect_vue___default.a,
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_db152fee_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_DragSelect_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
@@ -140,13 +141,13 @@ var content = __webpack_require__(2);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("2101f0cc", content, false);
+var update = __webpack_require__(4)("27786fb5", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db152fee\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./DragSelect.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db152fee\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./DragSelect.vue");
+   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db152fee\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./DragSelect.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-db152fee\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./DragSelect.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -164,7 +165,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.vue-drag-select {\n  position: relative;\n  user-select: none;\n}\n.vue-drag-select-box {\n  position: absolute;\n  background: rgba(0, 162, 255, .4);\n  z-index: 99;\n}\n", ""]);
+exports.push([module.i, "\n.vue-drag-select {\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.vue-drag-select-box {\n  position: absolute;\n  background: rgba(0, 162, 255, .4);\n  z-index: 99;\n}\n", ""]);
 
 // exports
 
@@ -616,19 +617,24 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-//
-//
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ __webpack_exports__["a"] = ({
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
   name: 'vue-drag-select',
   props: {
     selectorClass: {
@@ -636,147 +642,151 @@ module.exports = function normalizeComponent (
       required: true
     }
   },
-  data () {
+  data: function data() {
     return {
       mouseDown: false,
       startPoint: null,
       endPoint: null,
       selectedItems: []
-    }
+    };
   },
   computed: {
-    selectionBox () {
+    selectionBox: function selectionBox() {
       // Only set styling when necessary
-      if (!this.mouseDown || !this.startPoint || !this.endPoint) return {}
+      if (!this.mouseDown || !this.startPoint || !this.endPoint) return {};
+      var clientRect = this.$el.getBoundingClientRect();
+      var scroll = this.getScroll(); // Calculate position and dimensions of the selection box
 
-      // Calculate position and dimensions of the selection box
-      const left = Math.min(this.startPoint.x, this.endPoint.x) - this.$el.left
-      const top = Math.min(this.startPoint.y, this.endPoint.y) - this.$el.top
-      const width = Math.abs(this.startPoint.x - this.endPoint.x)
-      const height = Math.abs(this.startPoint.y - this.endPoint.y)
+      var left = Math.min(this.startPoint.x, this.endPoint.x) - clientRect.left - scroll.x;
+      var top = Math.min(this.startPoint.y, this.endPoint.y) - clientRect.top - scroll.y;
+      var width = Math.abs(this.startPoint.x - this.endPoint.x);
+      var height = Math.abs(this.startPoint.y - this.endPoint.y); // Return the styles to be applied
 
-      // Return the styles to be applied
       return {
-        left,
-        top,
-        width,
-        height
-      }
+        left: left,
+        top: top,
+        width: width,
+        height: height
+      };
     },
-    selectionBoxStyling () {
+    selectionBoxStyling: function selectionBoxStyling() {
       // Only set styling when necessary
-      if (!this.mouseDown || !this.startPoint || !this.endPoint) return {}
+      if (!this.mouseDown || !this.startPoint || !this.endPoint) return {};
+      var _selectionBox = this.selectionBox,
+          left = _selectionBox.left,
+          top = _selectionBox.top,
+          width = _selectionBox.width,
+          height = _selectionBox.height; // Return the styles to be applied
 
-      const { left, top, width, height } = this.selectionBox
-
-      // Return the styles to be applied
       return {
-        left: `${left}px`,
-        top: `${top}px`,
-        width: `${width}px`,
-        height: `${height}px`
-      }
+        left: "".concat(left, "px"),
+        top: "".concat(top, "px"),
+        width: "".concat(width, "px"),
+        height: "".concat(height, "px")
+      };
     }
   },
   watch: {
-    selectedItems (val) {
-      this.$emit('change', val)
+    selectedItems: function selectedItems(val) {
+      this.$emit('change', val);
     }
   },
   methods: {
-    onMouseDown (event) {
+    getScroll: function getScroll() {
+      var body = {
+        top: document.body.scrollTop > 0 ? document.body.scrollTop : document.documentElement.scrollTop,
+        left: document.body.scrollLeft > 0 ? document.body.scrollLeft : document.documentElement.scrollLeft
+      };
+      var scroll = {
+        y: this.$el.scrollTop > 0 ? this.$el.scrollTop : body.top,
+        x: this.$el.scrollLeft > 0 ? this.$el.scrollLeft : body.left
+      };
+      return scroll;
+    },
+    onMouseDown: function onMouseDown(event) {
       // Ignore right clicks
-      if (event.button === 2) return
+      if (event.button === 2) return; // Register begin point
 
-      // Register begin point
-      this.mouseDown = true
+      this.mouseDown = true;
       this.startPoint = {
         x: event.pageX,
-        y: event.pageY
-      }
+        y: event.pageY // Start listening for mouse move and up events
 
-      // Start listening for mouse move and up events
-      window.addEventListener('mousemove', this.onMouseMove)
-      window.addEventListener('mouseup', this.onMouseUp)
+      };
+      window.addEventListener('mousemove', this.onMouseMove);
+      window.addEventListener('mouseup', this.onMouseUp);
     },
-    onMouseMove (event) {
+    onMouseMove: function onMouseMove(event) {
+      var _this = this;
+
       // Update the end point position
       if (this.mouseDown) {
         this.endPoint = {
           x: event.pageX,
           y: event.pageY
-        }
-
-        const children = this.$children.length
-          ? this.$children
-          : this.$el.children
+        };
+        var children = this.$children.length ? this.$children : this.$el.children;
 
         if (children) {
-          this.selectedItems = Array.from(children).filter((item) => {
-            return this.isItemSelected(item.$el || item)
-          })
+          this.selectedItems = Array.from(children).filter(function (item) {
+            return _this.isItemSelected(item.$el || item);
+          });
         }
       }
     },
-    onMouseUp (event) {
+    onMouseUp: function onMouseUp(event) {
       // Clean up event listeners
-      window.removeEventListener('mousemove', this.onMouseMove)
-      window.removeEventListener('mouseup', this.onMouseUp)
+      window.removeEventListener('mousemove', this.onMouseMove);
+      window.removeEventListener('mouseup', this.onMouseUp); // Reset state
 
-      // Reset state
-      this.mouseDown = false
-      this.startPoint = null
-      this.endPoint = null
+      this.mouseDown = false;
+      this.startPoint = null;
+      this.endPoint = null;
     },
-    isItemSelected (el) {
+    isItemSelected: function isItemSelected(el) {
       if (el.classList.contains(this.selectorClass)) {
-        const boxA = this.selectionBox
-        const boxB = {
+        var boxA = this.selectionBox;
+        var boxB = {
           top: el.offsetTop,
           left: el.offsetLeft,
           width: el.clientWidth,
           height: el.clientHeight
-        }
-
-        return !!(
-          boxA.left <= boxB.left + boxB.width &&
-          boxA.left + boxA.width >= boxB.left &&
-          boxA.top <= boxB.top + boxB.height &&
-          boxA.top + boxA.height >= boxB.top
-        )
+        };
+        return !!(boxA.left <= boxB.left + boxB.width && boxA.left + boxA.width >= boxB.left && boxA.top <= boxB.top + boxB.height && boxA.top + boxA.height >= boxB.top);
       }
 
-      return false
+      return false;
     }
   },
-  mounted () {
-    this.$children.forEach((child) => {
-      child.$on('click', (event) => {
-        const included = this.selectedItems.find((item) => {
-          return child.$el === item.$el
-        })
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.$children.forEach(function (child) {
+      child.$on('click', function (event) {
+        var included = _this2.selectedItems.find(function (item) {
+          return child.$el === item.$el;
+        });
 
         if (included) {
-          this.selectedItems = this.selectedItems.filter((item) => {
-            return child.$el !== item.$el
-          })
+          _this2.selectedItems = _this2.selectedItems.filter(function (item) {
+            return child.$el !== item.$el;
+          });
         } else {
-          this.selectedItems.push(child)
+          _this2.selectedItems.push(child);
         }
-      })
-    })
+      });
+    });
   },
-  beforeDestroy () {
+  beforeDestroy: function beforeDestroy() {
     // Remove event listeners
-    window.removeEventListener('mousemove', this.onMouseMove)
-    window.removeEventListener('mouseup', this.onMouseUp)
-
-    this.$children.forEach((child) => {
-      child.$off('click')
-    })
+    window.removeEventListener('mousemove', this.onMouseMove);
+    window.removeEventListener('mouseup', this.onMouseUp);
+    this.$children.forEach(function (child) {
+      child.$off('click');
+    });
   }
-});
-
+};
+exports.default = _default;
 
 /***/ }),
 /* 8 */

@@ -7,11 +7,15 @@
   "author": "Stephan de Vries <stephan281094@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint --ignore-pattern 'dist' --ignore-path .gitignore --ext .js,.vue .",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.vue .",
     "build": "webpack"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.35",
+    "@babel/preset-env": "^7.0.0-beta.35",
+    "autoprefixer": "^7.2.3",
     "babel-eslint": "^7.2.3",
+    "babel-loader": "8.0.0-beta.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.2.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -20,6 +24,7 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "postcss-loader": "^2.0.9",
     "vue-loader": "^13.5.0",
     "vue-template-compiler": "^2.5.10",
     "webpack": "^3.10.0"
