@@ -28,9 +28,12 @@
         // Only set styling when necessary
         if (!this.mouseDown || !this.startPoint || !this.endPoint) return {}
 
+        const clientRect = this.$el.getBoundingClientRect()
+        const scroll = this.getScroll();
+
         // Calculate position and dimensions of the selection box
-        const left = Math.min(this.startPoint.x, this.endPoint.x) - this.$el.left
-        const top = Math.min(this.startPoint.y, this.endPoint.y) - this.$el.top
+        const left = Math.min(this.startPoint.x, this.endPoint.x) -  clientRect.left - scroll.x
+        const top = Math.min(this.startPoint.y, this.endPoint.y) - clientRect.top - scroll.y
         const width = Math.abs(this.startPoint.x - this.endPoint.x)
         const height = Math.abs(this.startPoint.y - this.endPoint.y)
 
@@ -63,6 +66,20 @@
       }
     },
     methods: {
+      getScroll() {
+        const body = {
+          top: document.body.scrollTop > 0 ? document.body.scrollTop : document.documentElement.scrollTop,
+          left: document.body.scrollLeft > 0 ? document.body.scrollLeft : document.documentElement.scrollLeft
+        };
+
+        const scroll = {
+          y: this.$el.scrollTop > 0 ? this.$el.scrollTop : body.top,
+          x: this.$el.scrollLeft > 0 ? this.$el.scrollLeft : body.left
+        };
+
+        return scroll;
+
+      },
       onMouseDown (event) {
         // Ignore right clicks
         if (event.button === 2) return
