@@ -7,7 +7,7 @@
   "author": "Stephan de Vries <stephan281094@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore --ext .js,.vue .",
+    "lint": "eslint --ignore-pattern 'dist' --ignore-path .gitignore --ext .js,.vue .",
     "build": "webpack"
   },
   "devDependencies": {
