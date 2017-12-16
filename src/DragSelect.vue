@@ -67,17 +67,10 @@
     },
     methods: {
       getScroll () {
-        const body = {
-          top: document.body.scrollTop > 0 ? document.body.scrollTop : document.documentElement.scrollTop,
-          left: document.body.scrollLeft > 0 ? document.body.scrollLeft : document.documentElement.scrollLeft
+        return {
+          x: this.$el.scrollLeft || document.body.scrollLeft || document.documentElement.scrollLeft,
+          y: this.$el.scrollTop || document.body.scrollTop || document.documentElement.scrollTop
         }
-
-        const scroll = {
-          y: this.$el.scrollTop > 0 ? this.$el.scrollTop : body.top,
-          x: this.$el.scrollLeft > 0 ? this.$el.scrollLeft : body.left
-        }
-
-        return scroll
       },
       onMouseDown (event) {
         // Ignore right clicks
