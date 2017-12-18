@@ -67,6 +67,14 @@
     },
     methods: {
       getScroll () {
+        // If we're on the server, default to 0,0
+        if (typeof document === 'undefined') {
+          return {
+            x: 0,
+            y: 0
+          }
+        }
+
         return {
           x: this.$el.scrollLeft || document.body.scrollLeft || document.documentElement.scrollLeft,
           y: this.$el.scrollTop || document.body.scrollTop || document.documentElement.scrollTop
