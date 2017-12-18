@@ -1,32 +1,27 @@
 <template>
   <div class="app">
     <h1>Vue Drag Select Example</h1>
-    <!-- DragSelect needs document variable, so only render in client side -->
-    <no-ssr>
-      <drag-select-container selectorClass="item">
-        <template scope="{ selectedItems }">
-          <div
-            v-for="item in 50"
-            :class="getClasses(item, selectedItems)"
-            :data-item="item"
-          >
-            Item {{ item }}
-          </div>
-        </template>
-      </drag-select-container>
-    </no-ssr>
+    <drag-select-container selectorClass="item">
+      <template scope="{ selectedItems }">
+        <div
+          v-for="item in 50"
+          :class="getClasses(item, selectedItems)"
+          :data-item="item"
+        >
+          Item {{ item }}
+        </div>
+      </template>
+    </drag-select-container>
   </div>
 </template>
 
 <script>
-  import DragSelect from 'vue-drag-select/src/DragSelect.vue'
-  import NoSSR from 'vue-no-ssr'
+  import DragSelect from 'vue-drag-select'
 
   export default {
     name: 'home',
     components: {
-      'drag-select-container': DragSelect,
-      'no-ssr': NoSSR
+      'drag-select-container': DragSelect
     },
     methods: {
       getClasses (item, selectedItems) {
