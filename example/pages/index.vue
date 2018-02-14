@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import DragSelect from 'vue-drag-select/src/DragSelect.vue'
+  import DragSelect from 'vue-drag-select'
 
   export default {
     name: 'home',
