@@ -1,28 +1,34 @@
 <template>
   <div class="app">
     <h1>Vue Drag Select Example</h1>
-    <drag-select-container selectorClass="item">
-      <template scope="{ selectedItems }">
-        <div
-          v-for="item in 50"
-          :class="getClasses(item, selectedItems)"
-          :data-item="item"
-        >
-          Item {{ item }}
-        </div>
-      </template>
-    </drag-select-container>
+    <no-ssr>
+      <drag-select-container selectorClass="item">
+        <template scope="{ selectedItems }">
+          <div
+            v-for="item in 50"
+            :class="getClasses(item, selectedItems)"
+            :data-item="item"
+          >
+            Item {{ item }}
+          </div>
+        </template>
+      </drag-select-container>
+    </no-ssr>
   </div>
 </template>
 
 <script>
   import DragSelect from 'vue-drag-select'
+  import NoSSR from 'vue-no-ssr'
 
   export default {
     name: 'home',
+
     components: {
-      'drag-select-container': DragSelect
+      'drag-select-container': DragSelect,
+      'no-ssr': NoSSR
     },
+
     methods: {
       getClasses (item, selectedItems) {
         const isActive = !!(selectedItems.find((selectedItem) => {
