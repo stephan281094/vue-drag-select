@@ -34,7 +34,7 @@ export default {
 ```vue
 <template>
   <drag-select-container selectorClass="itemToBeSelected">
-    <template scope="{ selectedItems }">
+    <template slot-scope="{ selectedItems }">
       <!-- Your items here -->
     </template>
   </drag-select-container>
