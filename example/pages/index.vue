@@ -3,7 +3,7 @@
     <h1>Vue Drag Select Example</h1>
     <no-ssr>
       <drag-select-container selectorClass="item">
-        <template scope="{ selectedItems }">
+        <template slot-scope="{ selectedItems }">
           <div
             v-for="item in 50"
             :class="getClasses(item, selectedItems)"
