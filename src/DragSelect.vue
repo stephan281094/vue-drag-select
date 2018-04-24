@@ -1,7 +1,7 @@
 <template>
   <div class="vue-drag-select" @mousedown="onMouseDown">
     <slot :selectedItems="selectedItems" />
-    // CHECK FOR CTRL KEY and if, no new selection
+    
     <div v-if="mouseDown && !keyPress" class="vue-drag-select-box"
       :style="selectionBoxStyling"></div>
   </div>
