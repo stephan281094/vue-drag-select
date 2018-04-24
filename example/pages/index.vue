@@ -8,6 +8,7 @@
             v-for="item in 50"
             :class="getClasses(item, selectedItems)"
             :data-item="item"
+            @click.ctrl=" ctrlSelect( item.id, selectedItems, $event)"
           >
             Item {{ item }}
           </div>
@@ -30,6 +31,12 @@
     },
 
     methods: {
+    ctrlSelect(item, selectedItems, obj) {
+  
+var res=this.findObjectByKey(selectedItems, 'id', item);
+if (res.id>=0) { selectedItems.splice(res.id, 1); } else {selectedItems.push(obj.target); }
+},  
+
       getClasses (item, selectedItems) {
         const isActive = !!(selectedItems.find((selectedItem) => {
           return parseInt(selectedItem.dataset.item, 10) === item
