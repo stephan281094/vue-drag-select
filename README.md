@@ -10,3 +10,5 @@ A Vue component for drag selecting elements. Inspired by [react-drag-select](htt
 * Visit the demo [here](https://teste223.lima-city.de/).
 
 very simple changes to supply additional deselect/ select items with pressed CTRL 
+
+please have in mind that this is only for information (not claimed to be professional )
