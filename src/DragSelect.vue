@@ -102,6 +102,8 @@
       onMouseMove (event) {
         // Update the end point position
         if (this.mouseDown) {
+        //avoid selection delete, when drag with ctrl pressed
+         if (this.keyPress===true) { return }
           this.endPoint = {
             x: event.pageX,
             y: event.pageY
