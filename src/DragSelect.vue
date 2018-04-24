@@ -1,7 +1,8 @@
 <template>
   <div class="vue-drag-select" @mousedown="onMouseDown">
     <slot :selectedItems="selectedItems" />
-    <div v-if="mouseDown" class="vue-drag-select-box"
+    // CHECK FOR CTRL KEY and if, no new selection
+    <div v-if="mouseDown && !keyPress" class="vue-drag-select-box"
       :style="selectionBoxStyling"></div>
   </div>
 </template>
@@ -17,6 +18,8 @@
     },
     data () {
       return {
+// store CTRL keyPress info
+        keyPress : false, 
         mouseDown: false,
         startPoint: null,
         endPoint: null,
@@ -83,7 +86,8 @@
       onMouseDown (event) {
         // Ignore right clicks
         if (event.button === 2) return
-
+        // CTRL Key is pressed 
+        this.keyPress=event.ctrlKey
         // Register begin point
         this.mouseDown = true
         this.startPoint = {
