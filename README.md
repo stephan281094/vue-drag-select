@@ -3,7 +3,7 @@
     alt="Screenshot">
 </p>
 
-# Vue Drag to Select Component
+# Vue Drag to Select Component  ( with enhancement for select/deselect items with pressed CTRL)
 A Vue component for drag selecting elements. Inspired by [react-drag-select](https://github.com/pablofierro/react-drag-select).
 
 ## Demo
