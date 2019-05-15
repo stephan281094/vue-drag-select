@@ -10,14 +10,15 @@
   export default {
     name: 'vue-drag-select',
     props: {
-      selectorClass: {
-        type: String,
-        required: true
+      selectableItems: {
+        type: [Array, Function],
+        required: false
       }
     },
     data () {
       return {
         mouseDown: false,
+        changedItems: false,
         startPoint: null,
         endPoint: null,
         selectedItems: []
@@ -57,6 +58,23 @@
           top: `${top}px`,
           width: `${width}px`,
           height: `${height}px`
+        }
+      },
+      items () {
+        const t = typeof this.selectableItems
+        switch (t) {
+          case 'function':
+            return this.selectableItems()
+            break
+          case 'array':
+            return this.selectableItems
+            break
+          case 'undefined':
+            return this.$children.length
+                    ? this.$children
+                    : this.$el.children
+          default:
+            throw `unsupported type '${t}' for property 'selectableItems'`
         }
       }
     },
@@ -103,14 +121,11 @@
             y: event.pageY
           }
 
-          const children = this.$children.length
-            ? this.$children
-            : this.$el.children
-
-          if (children) {
-            this.selectedItems = Array.from(children).filter((item) => {
+          if (this.items) {
+            this.selectedItems = this.items.filter((item) => {
               return this.isItemSelected(item.$el || item)
             })
+            this.changedItems = true
           }
         }
       },
@@ -119,30 +134,30 @@
         window.removeEventListener('mousemove', this.onMouseMove)
         window.removeEventListener('mouseup', this.onMouseUp)
 
+        if (this.changedItems)
+          this.$emit('select', this.selectedItems)
+
         // Reset state
         this.mouseDown = false
+        this.changedItems = false
         this.startPoint = null
         this.endPoint = null
       },
       isItemSelected (el) {
-        if (el.classList.contains(this.selectorClass)) {
-          const boxA = this.selectionBox
-          const boxB = {
-            top: el.offsetTop,
-            left: el.offsetLeft,
-            width: el.clientWidth,
-            height: el.clientHeight
-          }
-
-          return !!(
-            boxA.left <= boxB.left + boxB.width &&
-            boxA.left + boxA.width >= boxB.left &&
-            boxA.top <= boxB.top + boxB.height &&
-            boxA.top + boxA.height >= boxB.top
-          )
+        const boxA = this.selectionBox
+        const boxB = {
+          top: el.offsetTop,
+          left: el.offsetLeft,
+          width: el.clientWidth,
+          height: el.clientHeight
         }
 
-        return false
+        return !!(
+          boxA.left <= boxB.left + boxB.width &&
+          boxA.left + boxA.width >= boxB.left &&
+          boxA.top <= boxB.top + boxB.height &&
+          boxA.top + boxA.height >= boxB.top
+        )
       }
     },
     mounted () {
