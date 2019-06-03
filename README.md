@@ -28,18 +28,24 @@ export default {
 }
 ```
 
+* 
+
 * Wrap the items that you want to be selectable in the `drag-select-container`
-  with a `selectorClass` property and a scoped slot:
+  with a `selectableItems` property and a scoped slot:
 
 ```vue
 <template>
-  <drag-select-container selectorClass="itemToBeSelected">
+  <drag-select-container :selectableItems="itemToBeSelected">
     <template slot-scope="{ selectedItems }">
       <!-- Your items here -->
     </template>
   </drag-select-container>
 </template>
 ```
+
+`selectableItems` should either be an array of selectable DOM elements,
+ or a function returning an array of selectable DOM elements.
+If you omit the `selectableItems` property, DragSelect will work on its children.
 
 * Then write your own logic to make items look selected. For instance
   by applying a class.
