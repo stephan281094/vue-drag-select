@@ -7,10 +7,9 @@
 </template>
 
 <script>
-  // Expands array to have a unique function that filters out non-unique values
-  // eslint-disable-next-line no-extend-native
-  Array.prototype.unique = function () {
-    const newArray = this.concat()
+  // Takes an aray and returns a copy of the array without duplicates
+  function uniqueArray (array) {
+    const newArray = array.concat()
     for (let i = 0; i < newArray.length; ++i) {
       for (let j = i + 1; j < newArray.length; ++j) {
         if (newArray[i] === newArray[j]) {
@@ -66,8 +65,9 @@
       },
       selectionBoxStyling () {
         // Only set styling when necessary
-        if (!this.mouseDown || !this.startPoint || !this.endPoint) return {background: this.color}
-
+        if (!this.mouseDown || !this.startPoint || !this.endPoint) {
+          return { background: this.color }
+        }
         const {left, top, width, height} = this.selectionBox
 
         // Return the styles to be applied
@@ -137,7 +137,7 @@
 
             // If shift was held during mousedown the new selection is added to the current. Otherwise the new selection
             // will be selected
-            this.selectedItems = this.concat ? this.selectedItems.concat(selected).unique() : selected
+            this.selectedItems = this.concat ? uniqueArray(this.selectedItems.concat(selected)) : selected
           }
         }
       },
