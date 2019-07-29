@@ -7,17 +7,35 @@
 </template>
 
 <script>
+  // Takes an aray and returns a copy of the array without duplicates
+  function uniqueArray (array) {
+    const newArray = array.concat()
+    for (let i = 0; i < newArray.length; ++i) {
+      for (let j = i + 1; j < newArray.length; ++j) {
+        if (newArray[i] === newArray[j]) {
+          newArray.splice(j--, 1)
+        }
+      }
+    }
+    return newArray
+  }
+
   export default {
     name: 'vue-drag-select',
     props: {
       selectorClass: {
         type: String,
         required: true
+      },
+      color: {
+        type: String,
+        default: 'rgba(0, 162, 255, .4)'
       }
     },
     data () {
       return {
         mouseDown: false,
+        concat: false,
         startPoint: null,
         endPoint: null,
         selectedItems: []
@@ -47,12 +65,14 @@
       },
       selectionBoxStyling () {
         // Only set styling when necessary
-        if (!this.mouseDown || !this.startPoint || !this.endPoint) return {}
-
-        const { left, top, width, height } = this.selectionBox
+        if (!this.mouseDown || !this.startPoint || !this.endPoint) {
+          return { background: this.color }
+        }
+        const {left, top, width, height} = this.selectionBox
 
         // Return the styles to be applied
         return {
+          background: this.color,
           left: `${left}px`,
           top: `${top}px`,
           width: `${width}px`,
@@ -84,6 +104,9 @@
         // Ignore right clicks
         if (event.button === 2) return
 
+        // Check if shift is down
+        this.concat = event.shiftKey
+
         // Register begin point
         this.mouseDown = true
         this.startPoint = {
@@ -108,9 +131,13 @@
             : this.$el.children
 
           if (children) {
-            this.selectedItems = Array.from(children).filter((item) => {
+            const selected = Array.from(children).filter((item) => {
               return this.isItemSelected(item.$el || item)
             })
+
+            // If shift was held during mousedown the new selection is added to the current. Otherwise the new selection
+            // will be selected
+            this.selectedItems = this.concat ? uniqueArray(this.selectedItems.concat(selected)) : selected
           }
         }
       },
@@ -121,6 +148,7 @@
 
         // Reset state
         this.mouseDown = false
+        this.concat = false
         this.startPoint = null
         this.endPoint = null
       },
@@ -182,7 +210,6 @@
 
   .vue-drag-select-box {
     position: absolute;
-    background: rgba(0, 162, 255, .4);
     z-index: 99;
   }
 </style>
