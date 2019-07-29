@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  // Takes an aray and returns a copy of the array without duplicates
+  // Takes an array and returns a copy of the array without duplicates
   function uniqueArray (array) {
     const newArray = array.concat()
     for (let i = 0; i < newArray.length; ++i) {
