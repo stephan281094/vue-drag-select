@@ -1,6 +1,6 @@
 {
   "name": "vue-drag-select",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "A Vue component for drag selecting elements",
   "main": "dist/vue-drag-select.js",
   "repository": "git@github.com:stephan281094/vue-drag-select.git",
