@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "nuxt": "^2.0.0",
-    "vue-drag-select": "^0.1.5"
+    "vue-drag-select": "^0.2.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^4.1.0",
